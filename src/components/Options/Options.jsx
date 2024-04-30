@@ -1,20 +1,24 @@
 import css from "./Options.module.css";
 
-export default function Options(handleClick) {
+const Options = ({ updateFeedback, totalFeedback, resetFeedback }) => {
   return (
-    <div className={css.options}>
-      <button id="good" className={css.btn} onClick={handleClick}>
+    <div className="options">
+      <button onClick={() => updateFeedback("good")} className={css.btn}>
         Good
       </button>
-      <button id="neutral" className={css.btn}>
+      <button onClick={() => updateFeedback("neutral")} className={css.btn}>
         Neutral
       </button>
-      <button id="bad" className={css.btn}>
+      <button onClick={() => updateFeedback("bad")} className={css.btn}>
         Bad
       </button>
-      <button id="reset" className={css.btn}>
-        Reset
-      </button>
+      {totalFeedback > 0 && (
+        <button onClick={resetFeedback} className={css.btn}>
+          Reset
+        </button>
+      )}
     </div>
   );
-}
+};
+
+export default Options;
